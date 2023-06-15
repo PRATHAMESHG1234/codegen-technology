@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './Internship.css'; // Import your custom CSS file for styling
+import './Internship.css';
 import javaLogo from '../assets/java-logo.png';
 import pythonLogo from '../assets/python-logo.jpeg';
 import webDevLogo from '../assets/web-dev-logo.jpeg';
@@ -11,7 +11,7 @@ const InternshipPage = () => {
   const internshipRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const enrollInCourse = (course) => {
-    navigate(`/coursedetals/${course.title}`); // Assuming the route is "/courses/:courseName"
+    navigate(`/coursedetals/${course.title}`);
   };
   const courses = [
     {
@@ -36,23 +36,24 @@ const InternshipPage = () => {
       ([entry]) => {
         setIsActive(entry.isIntersecting);
 
-        // Set isActive to false immediately after it becomes true
         if (entry.isIntersecting) {
           setTimeout(() => {
             setIsActive(false);
           }, 3000);
         }
       },
-      { threshold: 0.5 } // Adjust the threshold as needed
+      { threshold: 0.5 }
     );
 
-    if (internshipRef.current) {
-      observer.observe(internshipRef.current);
+    const currentRef = internshipRef.current; // Store the current value of the ref in a local variable
+
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (internshipRef.current) {
-        observer.unobserve(internshipRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -65,7 +66,7 @@ const InternshipPage = () => {
           {courses.map((course, index) => (
             <div
               key={index}
-              className={`course-card  ${isActive ? 'card-animation' : ''}`}
+              className={`course-card ${isActive ? 'card-animation' : ''}`}
             >
               <div
                 className='background-image'
