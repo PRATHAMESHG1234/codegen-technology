@@ -4,16 +4,13 @@ import javaLogo from '../assets/java-logo.png';
 import pythonLogo from '../assets/python-logo.jpeg';
 import webDevLogo from '../assets/web-dev-logo.jpeg';
 import background from '../assets/coures-back.png';
-import CourseDetail1 from './coursedetaile/CourseDetail1';
 import { useNavigate } from 'react-router-dom';
 
 const InternshipPage = () => {
-  const [activeCourse, setActiveCourse] = useState(null);
   const navigate = useNavigate();
   const internshipRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const enrollInCourse = (course) => {
-    setActiveCourse(course);
     navigate(`/coursedetals/${course.title}`); // Assuming the route is "/courses/:courseName"
   };
   const courses = [

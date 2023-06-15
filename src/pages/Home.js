@@ -14,7 +14,6 @@ const Home = () => {
   const handleButtonClick = (route) => {
     navigate(route);
   };
-
   useEffect(() => {
     let textIndex = 0;
     let charIndex = 0;
@@ -23,7 +22,7 @@ const Home = () => {
     const typeText = () => {
       const text = texts[textIndex];
       if (charIndex < text.length) {
-        const { text: fragment, style } = text[charIndex];
+        const { fragment, style } = text[charIndex];
         const span = document.createElement('span');
         span.style.color = style.color;
         span.textContent = fragment;
@@ -39,10 +38,11 @@ const Home = () => {
     };
 
     const eraseText = () => {
-      const text = texts[textIndex];
+      const currentRef = typingRef.current; // Create a local variable
       if (charIndex > 0) {
-        if (typingRef.current) {
-          typingRef.current.removeChild(typingRef.current.lastChild);
+        if (currentRef) {
+          // Use the local variable in the cleanup function
+          currentRef.removeChild(currentRef.lastChild);
         }
         charIndex--;
         typingTimeout = setTimeout(eraseText, 100); // Adjust the erasing speed here
@@ -54,13 +54,8 @@ const Home = () => {
 
     typeText();
 
-    return () => {
-      clearTimeout(typingTimeout);
-      if (typingRef.current) {
-        typingRef.current.textContent = '';
-      }
-    };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [typingRef]);
 
   return (
     <>

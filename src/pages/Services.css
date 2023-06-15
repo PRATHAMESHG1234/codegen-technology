@@ -37,7 +37,7 @@
     color: #fff;
     font-size: 18px;
     text-align: start;
-    margin: 30px;/* Increase the font size of the description */
+    margin: 20px;/* Increase the font size of the description */
   }
   .custom-services-heading {
     text-align: center;
@@ -45,7 +45,7 @@
     font-size: 48px;
     padding-top: 65px;
   }
-  .icon {
+  .services-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,10 +53,13 @@
     height: 50px;
     border-radius: 50%;
     margin-bottom: 20px;
+
   }
   
-  .icon svg {
-    width: 30px;
-    height: 30px;
+  .services-icon svg {
+    width: 35px;
+    height: 35px;
+    box-shadow: 0px 0px 15px 7px #007bff;
+
   }
   

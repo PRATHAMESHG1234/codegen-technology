@@ -78,7 +78,7 @@ const Services = () => {
       <div className='cards-container'>
         {services.map((service, index) => (
           <div key={index} className='card'>
-            <div className='icon'>
+            <div className='services-icon'>
               {React.cloneElement(service.icon, { color: '#007bff', size: 30 })}
             </div>
             {/* Display the React Icon */}
