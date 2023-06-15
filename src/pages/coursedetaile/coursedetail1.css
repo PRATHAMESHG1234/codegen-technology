@@ -201,7 +201,7 @@ margin-left: 150px;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 40%;
+    width: 45%;
     border-top-right-radius: 2p solid red;
   }
   .small-course-tags-container h2{
@@ -278,7 +278,32 @@ margin-left: 150px;
   
     .course-overview-highlight,
     .small-course-tags-container {
-      width: 100%;
+      width: 42%;
+display: flex;
+flex-wrap: wrap;
+
+
+    }
+    .small-course-tag {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      margin: 100px 35px 10px 35px ;
+      border-radius: 100%;
+      margin-bottom: 20px;
+      background-color: #bbe6c6;
+      overflow: hidden;
+      position: relative;
+      animation: heartbeat 0.9s linear infinite;
+    }
+    
+    .small-course-tag img{
+      width: 60px;
+      height: 60px;
+     
+      border-radius: 100%;
     }
   }
   @keyframes heartbeat {
