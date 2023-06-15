@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Internship.css';
 import javaLogo from '../assets/java-logo.png';
 import pythonLogo from '../assets/python-logo.jpeg';
@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 
 const InternshipPage = () => {
   const navigate = useNavigate();
-  const internshipRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const enrollInCourse = (course) => {
     navigate(`/coursedetals/${course.title}`);
@@ -32,35 +31,37 @@ const InternshipPage = () => {
   ];
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsActive(entry.isIntersecting);
+    const handleIntersection = (entries) => {
+      const [entry] = entries;
+      setIsActive(entry.isIntersecting);
 
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            setIsActive(false);
-          }, 3000);
-        }
-      },
-      { threshold: 0.5 }
-    );
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          setIsActive(false);
+        }, 3000);
+      }
+    };
 
-    const currentRef = internshipRef.current; // Store the current value of the ref in a local variable
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.5,
+    });
 
-    if (currentRef) {
-      observer.observe(currentRef);
+    const internshipSection = document.getElementById('Internship-Page');
+
+    if (internshipSection) {
+      observer.observe(internshipSection);
     }
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
+      if (internshipSection) {
+        observer.unobserve(internshipSection);
       }
     };
   }, []);
 
   return (
     <div className='internship-page' id='Internship-Page'>
-      <section className='our-internship' ref={internshipRef}>
+      <section className='our-internship'>
         <h2 className='custom-heading'>Our Internship</h2>
         <div className='courses-container'>
           {courses.map((course, index) => (
