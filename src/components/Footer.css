@@ -1,0 +1,34 @@
+.app-footer {
+    background-color: #001529;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+  }
+  
+  .footer-links {
+    margin-bottom: 20px;
+  }
+  
+  .footer-link {
+    color: #fff;
+    margin-right: 10px;
+    text-decoration: none;
+  }
+  
+  .social-media {
+    margin-bottom: 20px;
+  }
+  
+  .social-media-link {
+    color: #fff;
+    margin-right: 10px;
+  }
+  
+  .social-media-icon {
+    font-size: 20px;
+  }
+  
+  .footer-text {
+    font-size: 14px;
+  }
+  

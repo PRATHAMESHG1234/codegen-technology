@@ -1,0 +1,124 @@
+.about-us-page {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+
+  }
+  
+  .about-section {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: end;
+    width: 100%;
+    height: 70%;
+    padding: 200px;
+    background-color: #001529;
+    z-index: -1;
+  }
+  .about-details{
+    position: absolute;
+    left: 70px;
+    bottom: 70px;
+  }
+  .about-section h2 {
+    color: white;
+    font-size: 53px;
+    margin-bottom: 10px;
+  }
+  
+  .about-section p {
+    color: white;
+    font-size: 40px;
+  }
+  
+  .info-section {
+    margin: 90px 250px 60px 50px;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 40px;
+  }
+  
+  .info-section h3 {
+    font-size: 65px;
+    margin-bottom: 10px;
+  }
+  
+  .info-section p {
+    padding-right: 10px;
+    font-size: 20px;
+  }
+  
+  .tags-container {
+    display: flex;
+    height: 100%;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: flex-end; /* Align tags to the right side of the container */
+  }
+  
+  .tag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center tag content horizontally */
+    width: 210px; /* Adjust the width as needed */padding: 10px;
+    margin-left: 5rem;
+    margin-bottom: 2rem;
+    height: 200px; /* Adjust the height as needed */
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease; /* Add transition for smooth animation */
+  }
+  
+  .tag img {
+    width: 70px; /* Increase the width to 40px */
+    height: 70px; /* Increase the height to 40px */
+    box-shadow:   0px 0px 12px 11px rgba(93, 152, 235, 0.5);
+    border-radius: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .tag p {
+    font-size: 14px;
+  }
+  
+  .tag:hover {
+    transform: scale(1.1); /* Increase the scale of the tag on hover */
+    box-shadow: -3px 0px 17px 11px rgba(93, 152, 235, 0.5);
+  }
+  
+  .tag:hover::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the background color and transparency as desired */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .tag:hover::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    opacity: 0;
+   
+    transition: opacity 0.3s ease;
+  }
+  
+  .tag:hover::before,
+  .tag:hover::after {
+    opacity: 1;
+  }
+  
