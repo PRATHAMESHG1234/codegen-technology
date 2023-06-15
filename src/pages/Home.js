@@ -1,61 +1,85 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './home.css';
 import video from './back.mp4';
-import { texts } from './Text';
 import Testimonial from './Testimonial';
 import Services from './services';
 import InternshipPage from './InternshipPage';
 import { useNavigate } from 'react-router-dom';
+import { texts } from './Text';
 
 const Home = () => {
-  const typingRef = useRef('');
+  const [typedText, setTypedText] = useState('');
   const navigate = useNavigate();
+  const typedTextRef = useRef('');
 
   const handleButtonClick = (route) => {
     navigate(route);
   };
+
   useEffect(() => {
     let textIndex = 0;
     let charIndex = 0;
     let typingTimeout;
+    let eraseTimeout;
 
     const typeText = () => {
       const text = texts[textIndex];
-      if (charIndex < text.length) {
-        const { fragment, style } = text[charIndex];
-        const span = document.createElement('span');
-        span.style.color = style.color;
-        span.textContent = fragment;
-        if (typingRef.current) {
-          typingRef.current.appendChild(span);
-        }
+      const fragmentObj = text[charIndex];
+
+      if (fragmentObj) {
+        const { text: fragment } = fragmentObj;
+
+        const mergedFragment = fragment;
+        const typedTextSoFar = typedTextRef.current + mergedFragment;
+
+        setTypedText(typedTextSoFar);
+        typedTextRef.current += mergedFragment;
+
         charIndex++;
-        typingTimeout = setTimeout(typeText, 100); // Adjust the typing speed here
-      } else {
-        clearTimeout(typingTimeout);
-        setTimeout(eraseText, 1500); // Wait 1.5 seconds before erasing the text
+
+        if (charIndex < text.length) {
+          const typingDelay = getRandomDelay(50, 150); // Generate a random delay between 50ms and 150ms
+          typingTimeout = setTimeout(typeText, typingDelay);
+        } else {
+          clearTimeout(typingTimeout);
+          eraseTimeout = setTimeout(eraseText, 1500); // Wait 1.5 seconds before erasing the text
+        }
       }
     };
 
     const eraseText = () => {
-      const currentRef = typingRef.current; // Create a local variable
-      if (charIndex > 0) {
-        if (currentRef) {
-          // Use the local variable in the cleanup function
-          currentRef.removeChild(currentRef.lastChild);
-        }
-        charIndex--;
-        typingTimeout = setTimeout(eraseText, 100); // Adjust the erasing speed here
+      if (typedTextRef.current.length > 0) {
+        const newText = typedTextRef.current.slice(0, -1);
+        setTypedText(newText);
+        typedTextRef.current = newText;
+        eraseTimeout = setTimeout(eraseText, 50); // Adjust the erasing speed here
       } else {
+        charIndex = 0;
         textIndex = (textIndex + 1) % texts.length; // Move to the next text
-        setTimeout(typeText, 500); // Wait 0.5 seconds before typing the next text
+        typingTimeout = setTimeout(typeText, 500); // Wait 0.5 seconds before typing the next text
       }
+    };
+
+    const getRandomDelay = (min, max) => {
+      return Math.floor(Math.random() * (max - min + 1) + min);
     };
 
     typeText();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [typingRef]);
+    return () => {
+      clearTimeout(typingTimeout);
+      clearTimeout(eraseTimeout);
+    };
+  }, []);
+
+  const getFragmentStyle = (index, textIndex) => {
+    const fragmentObj = texts[textIndex][index];
+    if (fragmentObj) {
+      const { style } = fragmentObj;
+      return style || {};
+    }
+    return {};
+  };
 
   return (
     <>
@@ -69,7 +93,13 @@ const Home = () => {
               <span className='highlight-green'>C</span>
               ode<span className='highlight-red'>G</span>en{' '}
               <span className='highlight-green'>Technologies</span>, <br />
-              <span className='typing-text' ref={typingRef}></span>
+              <span className='typing-text'>
+                {typedText.split('').map((char, index) => (
+                  <span key={index} style={getFragmentStyle(index, 0)}>
+                    {char}
+                  </span>
+                ))}
+              </span>
             </h1>
             <p className='description'>
               is simply dummy text of the printing and typesetting industry.
