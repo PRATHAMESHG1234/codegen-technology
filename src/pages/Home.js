@@ -110,20 +110,6 @@ const Home = () => {
             </p>
           </div>
         </div>
-        <div className='button-container'>
-          <button
-            className='button'
-            onClick={() => handleButtonClick('/aboutus')}
-          >
-            <i className='fas fa-info-circle'></i> About Us
-          </button>
-          <button
-            className='button'
-            onClick={() => handleButtonClick('/contact')}
-          >
-            <i className='fas fa-envelope'></i> Contact Us
-          </button>
-        </div>
       </section>
       <div style={{ backgroundColor: '#fff' }}>
         <Services />
