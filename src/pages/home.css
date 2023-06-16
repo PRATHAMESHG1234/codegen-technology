@@ -1,116 +1,131 @@
-
-
 .container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    z-index: -1;
-  }
-  
-  .video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: -1;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
 
-  }
-  
-  .video-background video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  
-  .content {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: start;
-    width: 100%;
-    z-index: 100;
-  }
-  
-  .content h1 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #ffffff;
-    font-size: 3.5rem;
-    font-weight: bold;
-    line-height: 1.2;
-    position: relative;
-  }
-  .content h1 .static-text {
-    display: inline-block;
-  }
-  .content h1 span.typing-text {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
-    padding-right: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: typingAnimation 3s steps(40) forwards;
-  }
-  .content h1  .highlight-green {
-    color: #02ff6b;
-  }
-  
-  .content h1  .highlight-red {
-    color: #ff2429;
-  }
- 
-  .description {
-    font-size: 16px;
-    color: #fff;
-    left: 50%;
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+}
 
-    width: 40vw;
-    margin-top: 7rem;
-  }
-  
-    .button-container {
-      display: flex;
-      left: 7%;
-      position: absolute;
-      justify-content: flex-start;
-      margin-top: -177px;
-    }
-   
-  
-    
-    .button {
-      background-color: white;
+.video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.content {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: start;
+  width: 100%;
+  z-index: 100;
+}
+
+.content h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #ffffff;
+  font-size: 3.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+  position: relative;
+}
+
+.content h1 .static-text {
+  display: inline-block;
+}
+
+.content h1 span.typing-text {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  padding-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typingAnimation 3s steps(40) forwards;
+}
+
+.content h1 .highlight-green {
+  color: #02ff6b;
+}
+
+.content h1 .highlight-red {
+  color: #ff2429;
+}
+
+.description {
+  font-size: 16px;
+  color: #fff;
+  left: 50%;
+  width: 40vw;
+  margin-top: 7rem;
+}
+
+.button-container {
+  display: flex;
+  left: 7%;
+  position: absolute;
+  justify-content: flex-start;
+  margin-top: -177px;
+}
+
+.button {
+  background-color: white;
   color: black;
   border: none;
   padding: 10px 30px;
   margin-right: 50px;
   border-radius: 4px;
   cursor: pointer;
-  cursor: pointer;
   display: flex;
   align-items: center;
   transition: background-color 0.3s;
-    }
-    
-    .button:hover {
-      background-color: #000;
-      color: #fff;
-    }
-   
+}
 
-  @keyframes typingAnimation {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
+.button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    top: 30%;
   }
-  
+
+  .description {
+    width: 80vw;
+    margin-top: 5rem;
+  }
+
+  .video-background video {
+    object-position: top;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .content {
+    top: 25%;
+  }
+
+  .description {
+    width: 90vw;
+    margin-top: 3rem;
+  }
+
+  .video-background video {
+    object-position: center;
+  }
+}
