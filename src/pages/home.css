@@ -99,7 +99,12 @@
   background-color: #000;
   color: #fff;
 }
-@media screen and (max-width: 768px) {
+
+@media (max-width: 767px) {
+  .container {
+    max-width: 88%;
+  }
+
   .content {
     top: 30%;
   }
@@ -112,23 +117,23 @@
   .video-background video {
     object-position: top;
   }
-  
-
 }
 
-@media screen and (max-width: 576px) {
+@media (max-width: 576px) {
   .content {
     top: 25%;
   }
 
   .description {
     width: 90vw;
-    margin-top: 3rem;
+    margin-top: 13rem;
+    font-size: 48px;
   }
 
   .video-background video {
     object-position: center;
   }
+
   .content h1 span.typing-text {
     position: absolute;
     left: 0;
@@ -138,7 +143,6 @@
     white-space: nowrap;
     overflow: hidden;
     animation: typingAnimation 3s steps(40) forwards;
-    font-size: 20px;
-
+    font-size: 55px;
   }
 }
