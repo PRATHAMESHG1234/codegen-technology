@@ -4,17 +4,11 @@ import video from './back.mp4';
 import Testimonial from './Testimonial';
 import Services from './services';
 import InternshipPage from './InternshipPage';
-import { useNavigate } from 'react-router-dom';
 import { texts } from './Text';
 
 const Home = () => {
   const [typedText, setTypedText] = useState('');
-  const navigate = useNavigate();
   const typedTextRef = useRef('');
-
-  const handleButtonClick = (route) => {
-    navigate(route);
-  };
 
   useEffect(() => {
     let textIndex = 0;
