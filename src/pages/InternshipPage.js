@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Internship.css';
 import javaLogo from '../assets/java-logo.png';
 import pythonLogo from '../assets/python-logo.jpeg';
-import webDevLogo from '../assets/web-dev-logo.jpeg';
+import webDevLogo from '../assets/mern-stack-logo.jpeg';
 import background from '../assets/coures-back.png';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import './home.css';
 import video from './back.mp4';
 import Testimonial from './Testimonial';
@@ -7,8 +7,7 @@ import InternshipPage from './InternshipPage';
 import { texts } from './Text';
 
 const Home = () => {
-  const [typedText, setTypedText] = useState('');
-  const typedTextRef = useRef('');
+  const [typedText, setTypedText] = useState([]);
 
   useEffect(() => {
     let textIndex = 0;
@@ -18,34 +17,37 @@ const Home = () => {
 
     const typeText = () => {
       const text = texts[textIndex];
-      const fragmentObj = text[charIndex];
+      let style = {}; // Declare the style variable here
+      let mergedFragment = '';
 
-      if (fragmentObj) {
-        const { text: fragment } = fragmentObj;
-
-        const mergedFragment = fragment;
-        const typedTextSoFar = typedTextRef.current + mergedFragment;
-
-        setTypedText(typedTextSoFar);
-        typedTextRef.current += mergedFragment;
-
-        charIndex++;
-
-        if (charIndex < text.length) {
-          const typingDelay = getRandomDelay(50, 150); // Generate a random delay between 50ms and 150ms
-          typingTimeout = setTimeout(typeText, typingDelay);
-        } else {
-          clearTimeout(typingTimeout);
-          eraseTimeout = setTimeout(eraseText, 1500); // Wait 1.5 seconds before erasing the text
+      for (let i = 0; i <= charIndex; i++) {
+        if (text[i]) {
+          mergedFragment += text[i].text;
+          style = text[i].style;
         }
+      }
+
+      const typedTextSoFar = [...typedText, { text: mergedFragment, style }];
+
+      setTypedText(typedTextSoFar);
+
+      charIndex++;
+
+      if (charIndex < text.length) {
+        const typingDelay = getRandomDelay(50, 150); // Generate a random delay between 50ms and 150ms
+        typingTimeout = setTimeout(typeText, typingDelay);
+      } else {
+        clearTimeout(typingTimeout);
+        eraseTimeout = setTimeout(eraseText, 50); // Adjust the erasing speed here
+
+        // Add your desired logic here when typing is complete
       }
     };
 
     const eraseText = () => {
-      if (typedTextRef.current.length > 0) {
-        const newText = typedTextRef.current.slice(0, -1);
+      if (typedText.length > 0) {
+        const newText = typedText.slice(0, -1);
         setTypedText(newText);
-        typedTextRef.current = newText;
         eraseTimeout = setTimeout(eraseText, 50); // Adjust the erasing speed here
       } else {
         charIndex = 0;
@@ -64,16 +66,8 @@ const Home = () => {
       clearTimeout(typingTimeout);
       clearTimeout(eraseTimeout);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const getFragmentStyle = (index, textIndex) => {
-    const fragmentObj = texts[textIndex][index];
-    if (fragmentObj) {
-      const { style } = fragmentObj;
-      return style || {};
-    }
-    return {};
-  };
 
   return (
     <>
@@ -88,9 +82,9 @@ const Home = () => {
               ode<span className='highlight-red'>G</span>en{' '}
               <span className='highlight-green'>Technologies</span>, <br />
               <span className='typing-text'>
-                {typedText.split('').map((char, index) => (
-                  <span key={index} style={getFragmentStyle(index, 0)}>
-                    {char}
+                {typedText.map((fragment, index) => (
+                  <span key={index} style={fragment.style}>
+                    {fragment.text}
                   </span>
                 ))}
               </span>

@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { Menu } from 'antd';
 import logo from '../assets/logo.png';
 import './header.css';
+import WhatsAppButton from '../pages/whatsapp';
 
 const AppHeader = () => {
   const handleScrollToSection = (sectionId) => {
@@ -58,6 +59,9 @@ const AppHeader = () => {
           </Menu.Item>
           <Menu.Item key='aboutus'>
             <Link to='/aboutus'>AboutUs</Link>
+          </Menu.Item>
+          <Menu.Item>
+            <WhatsAppButton />
           </Menu.Item>
         </Menu>
       </div>

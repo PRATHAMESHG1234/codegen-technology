@@ -12,6 +12,7 @@ import durationImage from '../../assets/duration-image.png';
 import comunityImage from '../../assets/comunity-image.png';
 import skillImage from '../../assets/skill-level-image.png';
 import modeImage from '../../assets/mode-image.png';
+import mernImage from '../../assets/mern-stack-logo.jpeg';
 export const data = [
   {
     aboutSection: {
@@ -112,10 +113,14 @@ export const data = [
         'Master the MERN (MongoDB, Express, React, Node.js) stack and become a skilled full stack web developer. Our MERN Stack course offers comprehensive training in building web applications using these popular technologies. Whether you are a beginner or experienced developer, this course will enhance your skills and make you job-ready.',
     },
     tags: [
-      { image: 'tag1.png', description: 'Tag 1' },
-      { image: 'tag2.png', description: 'Tag 2' },
-      { image: 'tag3.png', description: 'Tag 3' },
-      { image: 'tag3.png', description: 'Tag 3' },
+      { image: durationImage, heading: 'DURATION', description: '6 MONTHS' },
+      {
+        image: modeImage,
+        heading: 'MODE OF TRAINING',
+        description: 'OFFLINE',
+      },
+      { image: skillImage, heading: 'SKILL LEVEL', description: 'BEGINNER' },
+      { image: comunityImage, heading: 'COMUNITY', description: '1000+' },
     ],
     courseDetails: {
       overview: 'COURSE OVERVIEW',
@@ -135,15 +140,12 @@ export const data = [
       ],
     },
     smalltags: [
-      { image: '', description: 'Tag 1' },
-      { image: 'tag2.png', description: 'Tag 2' },
-      { image: 'tag3.png', description: 'Tag 3' },
-      { image: 'tag3.png', description: 'Tag 3' },
-      { image: 'tag3.png', description: 'Tag 3' },
-      { image: 'tag3.png', description: 'Tag 3' },
-      { image: 'tag3.png', description: 'Tag 3' },
-      { image: 'tag3.png', description: 'Tag 3' },
-      { image: 'tag3.png', description: 'Tag 3' },
+      { image: mernImage, description: 'Tag 1' },
+      { image: htmlImage, description: 'Tag 2' },
+      { image: cssImage, description: 'Tag 3' },
+      { image: jsImage, description: 'Tag 3' },
+      { image: reactImage, description: 'Tag 3' },
+      { image: mongodbImage, description: 'Tag 3' },
     ],
   },
 ];

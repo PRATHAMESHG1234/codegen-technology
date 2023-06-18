@@ -1,0 +1,14 @@
+.whatsapp-button {
+    background-color: #001529; /* Replace with your desired background color */
+    color: #25D366; /* Replace with your desired text color */
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .whatsapp-button:hover {
+    background-color: #128C7E; /* Replace with your desired hover background color */
+  }
+  
