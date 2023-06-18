@@ -50,7 +50,7 @@ const Home = () => {
       } else {
         charIndex = 0;
         textIndex = (textIndex + 1) % texts.length; // Move to the next text
-        typingTimeout = setTimeout(typeText, 500); // Wait 0.5 seconds before typing the next text
+        typingTimeout = setTimeout(typeText, 1000); // Wait 0.5 seconds before typing the next text
       }
     };
 
