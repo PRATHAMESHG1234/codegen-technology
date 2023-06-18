@@ -51,9 +51,12 @@
   position: absolute;
   left: 0;
   top: 100%;
-  width: 100%;
+  height: fit-content;
+  width: fit-content;
   padding-right: 10px;
   white-space: nowrap;
+  border-right: 6px solid #fff;
+
   overflow: hidden;
   animation: typingAnimation 3s steps(40) forwards;
 }

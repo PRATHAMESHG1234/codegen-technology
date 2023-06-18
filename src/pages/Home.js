@@ -43,11 +43,9 @@ const Home = () => {
         // Add your desired logic here when typing is complete
       }
     };
-
     const eraseText = () => {
       if (typedText.length > 0) {
-        const newText = typedText.slice(0, -1);
-        setTypedText(newText);
+        setTypedText((prevTypedText) => prevTypedText.slice(0, -1));
         eraseTimeout = setTimeout(eraseText, 50); // Adjust the erasing speed here
       } else {
         charIndex = 0;
