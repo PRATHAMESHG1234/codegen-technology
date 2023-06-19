@@ -8,7 +8,7 @@ import { texts } from './Text';
 
 const Home = () => {
   const [typedText, setTypedText] = useState([]);
-
+  console.log(typedText);
   useEffect(() => {
     let textIndex = 0;
     let charIndex = 0;
